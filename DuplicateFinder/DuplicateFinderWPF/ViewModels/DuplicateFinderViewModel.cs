@@ -19,13 +19,13 @@ namespace DuplicateFinderWPF.ViewModels
         
         
         private string _path = "Please enter a folder path to search for duplicate files: ";
-        private DuplicateFinder.Logic.DuplicateFinder _finder = new DuplicateFinder.Logic.DuplicateFinder();
+        private DuplicateFinderWPF.Models.DuplicateFinder _finder = new DuplicateFinderWPF.Models.DuplicateFinder();
         private string _duplicateBySize = "";
         private string _duplicateBySizeAndName = "";
         private string _duplicateByMD5 = "";
 
         // Model instance
-        public DuplicateFinder.Logic.DuplicateFinder Finder
+        public DuplicateFinderWPF.Models.DuplicateFinder Finder
                 {
                     get { return _finder; }
                     set { _finder = value; }

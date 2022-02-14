@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using DuplicateFinder.Logic.Interface;
 using DuplicateFinder.Logic.Model;
 
-namespace DuplicateFinder.Logic
+namespace DuplicateFinderWPF.Models
 {
     public class DuplicateFinder : IDuplicateFinder
     {
