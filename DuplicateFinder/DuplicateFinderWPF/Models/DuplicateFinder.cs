@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Abstractions;
 using System.Security.Cryptography;
-using DuplicateFinder.Logic.Interface;
-using DuplicateFinder.Logic.Model;
+using DuplicateFinderWPF.Interface;
 
 namespace DuplicateFinderWPF.Models
 {
     public class DuplicateFinder : IDuplicateFinder
     {
+
         private DirectoryInfo _rootDirectory;
         private List<FileInfo> _fileList;
 

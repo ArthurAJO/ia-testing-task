@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arthu\\Source\\Repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj": {}
+    "C:\\Users\\arthu\\source\\repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arthu\\Source\\Repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj": {
+    "C:\\Users\\arthu\\source\\repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arthu\\Source\\Repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\arthu\\source\\repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj",
         "projectName": "DuplicateFinder.Logic",
-        "projectPath": "C:\\Users\\arthu\\Source\\Repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj",
+        "projectPath": "C:\\Users\\arthu\\source\\repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj",
         "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arthu\\Source\\Repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\obj\\",
+        "outputPath": "C:\\Users\\arthu\\source\\repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,14 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "System.IO.Abstractions": {
+              "target": "Package",
+              "version": "[16.1.11, )"
+            },
+            "System.IO.Abstractions.TestingHelpers": {
+              "target": "Package",
+              "version": "[16.1.11, )"
             }
           },
           "imports": [

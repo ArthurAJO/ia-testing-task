@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using DuplicateFinder.Logic.Interface;
+using DuplicateFinderWPF.Interface;
 
-namespace DuplicateFinder.Logic.Model
+namespace DuplicateFinderWPF.Models
 {
     public class Duplicate : IDuplicate
     {

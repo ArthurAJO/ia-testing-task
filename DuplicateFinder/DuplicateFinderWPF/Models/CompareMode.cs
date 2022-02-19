@@ -1,4 +1,4 @@
-namespace DuplicateFinder.Logic.Model
+namespace DuplicateFinderWPF.Models
 {
     public enum CompareMode
     {

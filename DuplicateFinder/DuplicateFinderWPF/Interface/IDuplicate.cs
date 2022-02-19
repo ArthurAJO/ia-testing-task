@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DuplicateFinder.Logic.Interface
+namespace DuplicateFinderWPF.Interface
 {
     public interface IDuplicate
     {

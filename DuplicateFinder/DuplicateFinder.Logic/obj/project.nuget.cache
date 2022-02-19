@@ -1,11 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "ZkIR9Rrjpji6xyBWXYRT7N2H0141CQ+CIg2QmnIawMPuNKT2v6YCg0h+UwKnyBts8RwCeyiumf0uBrpJ/gG68Q==",
+  "dgSpecHash": "46RzpLIAlg3dBqldMjxC33Yn4klX626ERz2pdqcKcxQYiNWYEkDrQ55/sqmiUdKKhdlKUep1Ag2QNQ1K6vPeaA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\arthu\\Source\\Repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj",
+  "projectFilePath": "C:\\Users\\arthu\\source\\repos\\ArthurAJO\\ia-testing-task\\DuplicateFinder\\DuplicateFinder.Logic\\DuplicateFinder.Logic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arthu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\arthu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\arthu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\arthu\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
+    "C:\\Users\\arthu\\.nuget\\packages\\system.io.abstractions\\16.1.11\\system.io.abstractions.16.1.11.nupkg.sha512",
+    "C:\\Users\\arthu\\.nuget\\packages\\system.io.abstractions.testinghelpers\\16.1.11\\system.io.abstractions.testinghelpers.16.1.11.nupkg.sha512",
+    "C:\\Users\\arthu\\.nuget\\packages\\system.io.filesystem.accesscontrol\\4.7.0\\system.io.filesystem.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\arthu\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\arthu\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\arthu\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\arthu\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\arthu\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

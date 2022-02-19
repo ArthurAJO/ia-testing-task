@@ -4,18 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DuplicateFinder.Logic;
 using DuplicateFinderWPF.Views;
 using System.ComponentModel;
-using DuplicateFinder.Logic.Interface;
 using System.IO;
+using System.IO.Abstractions;
+using DuplicateFinderWPF.Interface;
+using DuplicateFinderWPF.Models;
 
 namespace DuplicateFinderWPF.ViewModels
 {
-
-    public class DuplicateFinderViewModel : Conductor<object>
+        public class DuplicateFinderViewModel : Conductor<object>
     {
-        public DuplicateFinderViewModel() { }
+        private readonly IFileSystem _fileSystem;
+        public DuplicateFinderViewModel() : this(new FileSystem()) { }
+        public DuplicateFinderViewModel(IFileSystem fileSystem)
+        {
+            _fileSystem = fileSystem;
+        }
+
+        //public DuplicateFinderViewModel() { }
         
         
         private string _path = "Please enter a folder path to search for duplicate files: ";
@@ -118,8 +125,8 @@ namespace DuplicateFinderWPF.ViewModels
             }
             else
             {
-                var duplicateBySize = _finder.CollectCandidates(Path, DuplicateFinder.Logic.Model.CompareMode.Size);
-                var duplicateBySizeAndName = _finder.CollectCandidates(Path, DuplicateFinder.Logic.Model.CompareMode.SizeAndName);
+                var duplicateBySize = _finder.CollectCandidates(Path, DuplicateFinderWPF.Models.CompareMode.Size);
+                var duplicateBySizeAndName = _finder.CollectCandidates(Path, DuplicateFinderWPF.Models.CompareMode.SizeAndName);
                 var duplicateByMD5 = _finder.CheckCandidates(duplicateBySizeAndName);
 
 

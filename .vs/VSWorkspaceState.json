@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\DuplicateFinder",
+    "\\DuplicateFinder\\DuplicateFinder.Console",
+    "\\DuplicateFinder\\DuplicateFinder.Console\\Properties",
+    "\\DuplicateFinder\\DuplicateFinder.Test"
+  ],
+  "SelectedNode": "\\DuplicateFinder\\DuplicateFinder.Console\\Properties\\AssemblyInfo.cs",
+  "PreviewInSolutionExplorer": false
+}
