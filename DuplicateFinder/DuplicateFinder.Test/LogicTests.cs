@@ -116,18 +116,6 @@ namespace DuplicateFinder.Test
                     FileStream fs = File.Create(pathFiletxt);
                     fs.Close();
                 }
-                /*for (int dir = 0; dir <= numberOfDuplicatedSizes; dir++)
-                {
-                    string pathNewDir = Path.Combine(pathDir, " Folder " + dir);
-                    Directory.CreateDirectory(pathNewDir);
-                    int elements = 2;
-                    for (int i = 0; i < elements; i++)
-                    {
-                        pathFiletxt = Path.Combine(pathNewDir, "test" + i + ".txt");
-                        FileStream fs = File.Create(pathFiletxt);
-                        fs.Close();
-                    }
-                }*/
             }
             else if(mode == "MoreThanOneDuplicatedSize")
             {
