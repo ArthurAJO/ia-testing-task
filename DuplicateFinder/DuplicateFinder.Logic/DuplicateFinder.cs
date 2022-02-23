@@ -176,5 +176,80 @@ namespace DuplicateFinder.Logic
             }
             return FileList;
         }
+
+        public IEnumerable<IDuplicate> RenameDuplicatedFilesWithBlacklistCheck(IEnumerable<IDuplicate> duplicatesList)
+        {
+            var workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.Parent.FullName;
+
+            string bracklistFilePath = Path.Combine(projectDirectory, "DuplicateFinderWPF/Resources/Files Blacklist.txt");
+
+            string[] blacklistedPaths = File.ReadAllLines(bracklistFilePath);
+            var allowRenameFiles = true;
+
+            foreach (var duplicate in duplicatesList)
+            {
+                foreach (var filepath in duplicate.FilePaths)
+                {
+                    foreach (var blacklistPathInFile in blacklistedPaths)
+                    {
+                        if (filepath == blacklistPathInFile) allowRenameFiles = false;
+                    }
+                }
+            }
+
+            IEnumerable<IDuplicate> resultRenameMethod = new List<IDuplicate>();
+            if (allowRenameFiles == true)
+                resultRenameMethod = RenameDuplicatedFiles(duplicatesList);
+
+            return resultRenameMethod;
+
+        }
+        public IEnumerable<IDuplicate> RenameDuplicatedFiles(IEnumerable<IDuplicate> duplicatesList)
+        {
+            var renamedPaths = new Dictionary<string, List<string>>();
+            var count = 0;
+            foreach (var duplicate in duplicatesList)
+            {
+                foreach (var filePath in duplicate.FilePaths)
+                {
+                    var countRepeatedRename = 1;
+                    string oldPath = filePath;
+                    var fileRenamed = false;
+                    var fileName = Path.GetFileName(filePath);
+                    string filePathDirectory = oldPath.Remove(filePath.Length - fileName.Length);
+                    var filesInDirectory = Directory.GetFiles(filePathDirectory);
+                    while (fileRenamed == false)
+                    {
+                        var allowRename = true;
+                        string multipleFileTag = " (" + countRepeatedRename + ")";
+                        string newPath = oldPath.Remove(oldPath.Length - 4) + multipleFileTag + Path.GetExtension(filePath);
+
+                        foreach (var checkfilepath in filesInDirectory)
+                        {
+                            if (newPath == checkfilepath) allowRename = false;
+                        }
+
+                        if (allowRename == true)
+                        {
+                            fileRenamed = true;
+                            File.Move(oldPath, newPath);
+                            string countPosition = "" + count;
+                            renamedPaths.Add(countPosition, new List<string>());
+                            renamedPaths[countPosition].Add(newPath);
+                        }
+                        count++;
+                        countRepeatedRename++;
+                    }
+                }
+            }
+            List<IDuplicate> resultRenameMethod = new List<IDuplicate>();
+            foreach (var renamed in renamedPaths)
+            {
+                resultRenameMethod.Add(new Duplicate(renamed.Value));
+            }
+
+            return resultRenameMethod;
+        }
     }
 }

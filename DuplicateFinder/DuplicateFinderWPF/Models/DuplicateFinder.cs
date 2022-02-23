@@ -181,7 +181,7 @@ namespace DuplicateFinderWPF.Models
         public IEnumerable<IDuplicate> RenameDuplicatedFilesWithBlacklistCheck(IEnumerable<IDuplicate> duplicatesList) 
         {
             var workingDirectory = Environment.CurrentDirectory; 
-            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.Parent.FullName;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
 
             string bracklistFilePath = Path.Combine(projectDirectory,"DuplicateFinderWPF/Resources/Files Blacklist.txt");
 
@@ -217,18 +217,21 @@ namespace DuplicateFinderWPF.Models
                     var countRepeatedRename = 1;
                     string oldPath = filePath;
                     var fileRenamed = false;
+                    var fileName = Path.GetFileName(filePath);
+                    string filePathDirectory = oldPath.Remove(filePath.Length - (fileName.Length+1));
+                    var filesInDirectory = Directory.GetFiles(filePathDirectory);
                     while (fileRenamed == false)
                     {
                         var allowRename = true;
                         string multipleFileTag = " (" + countRepeatedRename + ")";
                         string newPath = oldPath.Remove(oldPath.Length - 4) + multipleFileTag + Path.GetExtension(filePath);
-                        
-                        foreach (var checkfilepath in duplicate.FilePaths)
+
+                        foreach (var checkfilepath in filesInDirectory)
                         {
                             if (newPath == checkfilepath) allowRename = false;
                         }
 
-                        if (allowRename ==  true)
+                        if (allowRename == true)
                         {
                             fileRenamed = true;
                             File.Move(oldPath, newPath);
@@ -244,7 +247,7 @@ namespace DuplicateFinderWPF.Models
             List<IDuplicate> resultRenameMethod = new List<IDuplicate>();
             foreach (var renamed in renamedPaths)
             {
-                    resultRenameMethod.Add(new Duplicate(renamed.Value));
+                resultRenameMethod.Add(new Duplicate(renamed.Value));
             }
 
             return resultRenameMethod;

@@ -129,6 +129,12 @@ namespace DuplicateFinderWPF.ViewModels
                 var duplicateBySizeAndName = _finder.CollectCandidates(Path, DuplicateFinderWPF.Models.CompareMode.SizeAndName);
                 var duplicateByMD5 = _finder.CheckCandidates(duplicateBySizeAndName);
 
+                //The implementation of the RenameDuplicatedFilesWithBlacklistCheck(duplicateBySize) is commented
+                //in order to not crash the application until the exception would be treated, as infomed on GitHub.
+                /*_finder.RenameDuplicatedFilesWithBlacklistCheck(duplicateBySize);*/
+                _finder.RenameDuplicatedFilesWithBlacklistCheck(duplicateBySizeAndName);
+                _finder.RenameDuplicatedFilesWithBlacklistCheck(duplicateByMD5);
+
 
                 DuplicateBySize = CheckEmptyString(SampleDuplicates(duplicateBySize));
                 DuplicateBySizeAndName = CheckEmptyString(SampleDuplicates(duplicateBySizeAndName));

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
-using DuplicateFinderWPF.Interface;
+using DuplicateFinder.Logic.Interface;
 using System;
-using DuplicateFinderWPF.Models;
-
+using DuplicateFinder.Logic.Model;
 
 namespace DuplicateFinder.Test
 {
@@ -26,7 +25,7 @@ namespace DuplicateFinder.Test
             directoryCreation(mode, pathDir, numberOfDuplicatedItems);
 
             var duplicateBySize = duplicatefinder.CollectCandidates(
-                pathDir, DuplicateFinderWPF.Models.CompareMode.Size);
+                pathDir, CompareMode.Size);
             var renameReturn = duplicatefinder.RenameDuplicatedFiles(duplicateBySize);
 
             testDirectoryPermanentDeletion(pathDir);
@@ -84,7 +83,7 @@ namespace DuplicateFinder.Test
             directoryCreation(mode, pathDir, numberOfDuplicatedItems);
 
             var duplicateBySize = duplicatefinder.CollectCandidates(
-                pathDir, DuplicateFinderWPF.Models.CompareMode.Size);
+                pathDir, CompareMode.Size);
 
             var count = 0;
             var duplicatedFiles = new Dictionary<string, List<string>>();
@@ -122,10 +121,11 @@ namespace DuplicateFinder.Test
 
             duplicatefinder.RenameDuplicatedFiles(duplicateBySize);
 
-            var resultOne = Path.Combine(pathDir, "test (2).txt");
-            var resultTwo = Path.Combine(pathDir, "test (1) (2).txt");
-            var resultThree = Path.Combine(pathDir, "test (1) (1) (2).txt");
-            var resultFour = Path.Combine(pathDir, "test (1) (1) (1) (1).txt");
+            var resultOne = Path.Combine(pathDir, "test (1).txt");
+            var resultTwo = Path.Combine(pathDir, "test (1) (1).txt");
+            var resultThree = Path.Combine(pathDir, "test (1) (1) (1).txt");
+            var resultFour = Path.Combine(pathDir, "test (1) (1) (1) (2).txt");
+            var resultFive = Path.Combine(pathDir, "test (1) (1) (1) (1).txt");
 
             var resultFileNames = Directory.GetFiles(pathDir);
 
@@ -133,6 +133,7 @@ namespace DuplicateFinder.Test
             Assert.Contains(resultTwo, resultFileNames);
             Assert.Contains(resultThree, resultFileNames);
             Assert.Contains(resultFour, resultFileNames);
+            Assert.Contains(resultFive, resultFileNames);
 
             testDirectoryPermanentDeletion(pathDir);
 
@@ -165,7 +166,7 @@ namespace DuplicateFinder.Test
             directoryCreation(mode, pathDir, numberOfDuplicatedItems);
 
             var duplicateBySize = duplicatefinder.CollectCandidates(
-                pathDir, DuplicateFinderWPF.Models.CompareMode.Size);
+                pathDir, CompareMode.Size);
 
             
             var renameReturn = duplicatefinder.RenameDuplicatedFilesWithBlacklistCheck(duplicateBySize);
@@ -190,7 +191,7 @@ namespace DuplicateFinder.Test
             directoryCreation(mode, pathDir, numberOfDuplicatedItems);
 
             var duplicateBySize = duplicatefinder.CollectCandidates(
-                pathDir, DuplicateFinderWPF.Models.CompareMode.Size);
+                pathDir, CompareMode.Size);
 
             var count = 0;
             var duplicatedFiles = new Dictionary<string, List<string>>();
@@ -247,9 +248,9 @@ namespace DuplicateFinder.Test
 
         #region{RenameDuplicatedFiles Setup} 
 
-        private DuplicateFinderWPF.Models.DuplicateFinder getDuplicateFinder()
+        private DuplicateFinder.Logic.DuplicateFinder getDuplicateFinder()
         {
-            return new DuplicateFinderWPF.Models.DuplicateFinder();
+            return new DuplicateFinder.Logic.DuplicateFinder();
         }
 
         private IEnumerable<IDuplicate> createBlacklistedFiles() 
@@ -271,7 +272,6 @@ namespace DuplicateFinder.Test
                 count++;
             }
 
-            //IEnumerable<IDuplicate> blacklistedFiles = new List<IDuplicate>();
             List<IDuplicate> blacklistedFiles = new List<IDuplicate>();
             foreach (var files in blacklistedPathsDictionary)
             {
@@ -293,6 +293,16 @@ namespace DuplicateFinder.Test
                 FileStream fs = File.Create(pathFiletxt);
                 fs.Close();
             }
+
+            pathFiletxt = Path.Combine(pathDir, "test (1) (1) (1) (1).txt");
+            FileStream fsw = File.Create(pathFiletxt);
+
+            AddText(fsw, "This is some text");
+            AddText(fsw, "This is some more text,");
+            AddText(fsw, "\r\nand this is on a new line");
+            AddText(fsw, "\r\n\r\nThe following is a subset of characters:\r\n");
+
+            fsw.Close();
         }
 
         private void directoryCreation(string mode, string pathDir, int numberOfDuplicatedSizes)
